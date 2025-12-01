@@ -26,19 +26,52 @@ data = read_data(file_path=file_path)
 # R14
 # L82
 
+## ======================= Part 1 ================================##
+
+# current_lock = 50   # Starting dial
+# password = 0        # Pass
+# for command in data:    
+#     print(command)
+#     sequence = command.strip("LR")      # Sequence = fucking number 19238129371283719283
+#     if command.startswith('L'):         # Command = Left or right +-------==-=-=+-
+#         current_lock = current_lock - int(sequence)
+#         current_lock = current_lock % -100
+#     elif command.startswith('R'):
+#         current_lock = current_lock + int(sequence)
+#         current_lock = current_lock % 100
+#     print(current_lock)
+#     if current_lock == 0:
+#         password+=1
+# print(password)
+
+
+## ======================== Part 2 ============================== ## 
+#R631
+# 6892
+# 6805-6911 too high
+
 current_lock = 50   # Starting dial
 password = 0        # Pass
 for command in data:    
     print(command)
-    sequence = command.strip("LR")      # Sequence = fucking number 19238129371283719283
+    sequence = int(command.strip("LR"))      # Sequence = fucking number 19238129371283719283
     if command.startswith('L'):         # Command = Left or right +-------==-=-=+-
-        current_lock = current_lock - int(sequence)
-        current_lock = current_lock % -100
+        for i in range(sequence):
+            current_lock-=1
+            if current_lock == 0:
+                password+=1
+            if current_lock == -1:
+                current_lock = 99
+
+            print(current_lock)
+
     elif command.startswith('R'):
-        current_lock = current_lock + int(sequence)
-        current_lock = current_lock % 100
-    print(current_lock)
-    if current_lock == 0:
-        password+=1
-print(password)
+        for i in range(sequence):
+            current_lock+=1
+            if current_lock == 100:
+                password+=1
+                current_lock -= 100
+            print(current_lock)
+
+print(f"Password: {password}")
 
