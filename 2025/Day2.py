@@ -59,3 +59,7 @@ def part1(input):
 invalid_ids = part1(input_raw)
 answer = sum(invalid_ids)
 print(answer)
+
+
+## ============================ Part 2 ============================= ##
+
