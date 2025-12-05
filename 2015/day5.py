@@ -55,4 +55,33 @@ for i in raw_data:
             if check_bad_letters(i) == True:
                 # print(f"{i} pass the check for forbidden letters")
                 part1 += 1
-print(part1) # 238 answer
+print(f"Part 1 Answer : {part1}") # 238 answer
+
+
+# =================================================== Part 2 ======================================================== #
+# Conditions 2
+    # It contains a pair of any two letters that appears at least twice in the string without overlapping, like xyxy (xy) or aabcdefgaa (aa), but not like aaa (aa, but it overlaps).
+    # It contains at least one letter which repeats with exactly one letter between them, like xyx, abcdefeghi (efe), or even aaa.
+
+    # Only checks the pair of two characters
+def check_pairs(string):
+    length = len(string)
+    for idx,x in enumerate(string):
+        if idx + 1 == length:
+            return False
+        pair = x + string[idx+1]
+        print(pair)
+    return False
+
+def check_space(string):
+    return False
+
+
+part2 = 0
+for i in test_data:
+    if check_pairs(i) == True:
+        # print(f"{i} pass the check for check vows")
+        if check_space(i) == True:
+            # print(f"{i} pass the check for twice letters")
+            part2 += 1
+print(part2) # 238 answer
