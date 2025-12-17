@@ -64,8 +64,6 @@ def calculate_column(numbers, operations):
 test_data = read_file("2025/day6sample.csv").splitlines()
 raw_data = read_file("2025/day6.csv").splitlines()
 new_data = []
-operations = []
-
 grid = []
 for line in test_data:
     sentence = []
@@ -73,4 +71,35 @@ for line in test_data:
         sentence.append(x)
     grid.append(sentence)
 
-print(grid)
+# Add white space in the back
+max_length = max(map(len, grid))
+for x in grid:
+    if len(x) < max_length:
+        while len(x) < max_length:
+            x.append(" ")
+grid.pop(-1)
+operations = operations[0]
+
+
+# LOOP THROUGH OPERATOR
+for operator in reversed(operations):
+    # LOOP THROUGH GRID[y]
+    for idy, y in enumerate(grid):
+        number_to_add = ""
+        for idx, x in enumerate(reversed(y)):
+            for i in y:
+                if idx + 1 == len(y):
+                    number_to_add += x
+                elif i[idx + 1] != " ":
+                    print("Gucci")
+                else:
+                    if x == " ":
+                        number_to_add += "0"
+            else:
+                number_to_add += x
+        print(number_to_add)
+# LOOP THROUGH GRID[X]
+#
+
+# print(grid)
+print(operations)

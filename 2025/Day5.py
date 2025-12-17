@@ -29,7 +29,7 @@ def check(i, ranges):
 
 
 counts = 0
-ranges, ingredients = split_strings(raw_data)
+ranges, ingredients = split_strings(test_data)
 for i in ingredients:
     counts += check(i, ranges)
 
